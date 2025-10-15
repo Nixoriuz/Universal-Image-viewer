@@ -1,0 +1,32 @@
+# UTF-8
+VSVersionInfo(
+  ffi=FixedFileInfo(
+    # filevers and prodvers should be tuples of four integers: (1, 0, 0, 0)
+    filevers=(1, 0, 0, 0),
+    prodvers=(1, 0, 0, 0),
+    # Set the mask to tell Windows which properties to use.
+    mask=0x3f,
+    # OS selection
+    OS=0x40004,
+    # Filetype should be VFT_APP
+    fileType=0x1,
+    subtype=0x0,
+    date=(0, 0)
+  ),
+  kids=[
+    StringFileInfo(
+      [
+      StringTable(
+        u'040904B0',
+        [StringStruct(u'CompanyName', u'N.Z'),
+        StringStruct(u'FileDescription', u'Universal image viewer, Set as Default App for Heic to use'),
+        StringStruct(u'FileVersion', u'1.0.0.0'),
+        StringStruct(u'InternalName', u'Universal Viewer'),
+        StringStruct(u'LegalCopyright', u'Made by N.Z'),
+        StringStruct(u'OriginalFilename', u'Universal Viewer.exe'),
+        StringStruct(u'ProductName', u'Universal Image Viewer'),
+        StringStruct(u'ProductVersion', u'1.0.0.0')])
+      ]),
+    VarFileInfo([VarStruct(u'Translation', [1033, 1200])])
+  ]
+)
