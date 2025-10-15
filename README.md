@@ -22,6 +22,8 @@
 -   ✅ **Cross-Platform**: Fully functional on Windows, macOS, and Linux.
 -   ✅ **Standalone**: Can be compiled into a single executable with no dependencies required.
 
+---
+
 ### 📁 Supported File Types
 
 This application can open a wide variety of image formats:
@@ -33,16 +35,26 @@ This application can open a wide variety of image formats:
 | **Bitmap** | `.bmp`, `.ico`, `.ppm`, `.pcx` |
 | **Advanced** | `.tiff`, `.tif`, `.psd`, `.eps`, `.pdf`, `.svg` |
 
+---
+
 ### ⚙️ How It Works
 
-The script leverages the **Pillow** and **pillow-heif** libraries to open a given image file. It then saves a temporary, lossless PNG version of the image to your system's temporary directory. Finally, it calls the default system image viewer to display this temporary file, ensuring the window title reflects the original file's name.
+The script leverages the **Pillow** and **pillow-heif** libraries to open a given image file. It then saves a temporary, **lossless** PNG version of the image to your system's default temporary directory. Because PNG is a lossless format, no quality is lost during this temporary conversion.
+
+The temporary directory location is determined by the `tempfile.gettempdir()` function in the code:
+* **Windows**: Usually `C:\Users\YourUsername\AppData\Local\Temp`
+* **macOS**: A secure folder inside `/var/folders/`
+* **Linux**: Usually `/tmp`
+
+Finally, it calls the default system image viewer to display this temporary file. The temporary file is not automatically deleted but will be cleared by your operating system's standard temp file cleanup rules.
+
+---
 
 ### 🚀 Getting Started
 
 #### Prerequisites
 
 You must have Python 3 installed. Then, install the required libraries using pip:
-
 ```bash
 pip install Pillow pillow-heif
 ````
@@ -55,19 +67,25 @@ To view an image, run the script from your terminal and pass the file path as an
 python Universal_Image_Viewer.py "C:\path\to\your\image.heic"
 ```
 
+-----
+
 ### 📦 Building the Executable
 
 You can compile this script into a single, standalone executable using **PyInstaller**. This allows anyone to use the viewer without installing Python.
 
 1.  **Install PyInstaller:**
+
     ```bash
     pip install pyinstaller
     ```
+
 2.  **Build the Executable:**
     Run the following command in your terminal from the project's root directory. Make sure `app_icon.ico` and `version_info.txt` are present.
+
     ```bash
     python -m PyInstaller --onefile --windowed --name="Universal Image Viewer" --icon="app_icon.ico" --version-file="version_info.txt" Universal_Image_Viewer.py
     ```
+
     The final `.exe` file will be located in the newly created `dist` folder.
 
 \<details\>
